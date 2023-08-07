@@ -1,5 +1,7 @@
 import './search-box.styles.css';
 
+// Never use the ANY keyword
+
 const SearchBox = ({ className, placeholder, onChangeHandler }) => (
   <input
     className={`search-box ${className}`}
