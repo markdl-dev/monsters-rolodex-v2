@@ -1,40 +1,27 @@
+import { ChangeEvent } from "react";
 import './search-box.styles.css';
 
 // Never use the ANY keyword
 
-interface ISearchBoxProps {
-  className: string;
-  placeholder?: string; // optional ? (string or null)
-}
+// If you want your change handler to register some kind of event
+// - bring in the change event, -> this is the event definition
+// - ChangeEventHandler -> this is the function definition
+// - this means you can define your own function definition
+// - if you want to define your own function
 
-// What is the difference?
-// Types allows union
-// Union - combination of types
-// Golden rule - function programming use types, OOP use interface
-
+// previous code just using the function definition
 // type SearchBoxProps = {
 //   className: string;
-//   placeholder?: string;
-//   onChangeHandler: (a: string) => void
+//   placeholder: string;
+//   onChangeHandler: ChangeEventHandler<HTMLInputElement>;
 // }
-//
-// type CanadianAddress = {
-//   street: string;
-//   province: string;
-// }
-//
-// type USAddress = {
-//   street: string;
-//   state: string;
-// }
-//
-// type Address = CanadianAddress | USAddress;
-//
-// const Address: Address = {
-//   street: 'test',
-//   state: 'test',
-//   province: 'test'
-// }
+
+type SearchBoxProps = {
+  className: string;
+  placeholder: string;
+  onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
+  // onChangeHandler: (event: ChangeEvent<HTMLInputElement>, can also add additional parameters) => boolean; // you can change this
+}
 
 const SearchBox = ({ className, placeholder, onChangeHandler }: SearchBoxProps) => (
   <input
