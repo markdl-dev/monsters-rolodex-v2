@@ -3,6 +3,13 @@ import { useState, useEffect } from 'react';
 import CardList from './components/card-list/card-list.component';
 import SearchBox from './components/search-box/search-box.component';
 import './App.css';
+import {getData} from "./utils/data.utils";
+
+type Monster = {
+  id: string;
+  name: string;
+  email: string;
+}
 
 const App = () => {
   const [searchField, setSearchField] = useState('');
@@ -10,9 +17,9 @@ const App = () => {
   const [filteredMonsters, setFilterMonsters] = useState(monsters);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((users) => setMonsters(users));
+    const fetchUsers = async () => {
+      const users = getData<Monster[]>('https://jsonplaceholder.typicode.com/users');
+    }
   }, []);
 
   useEffect(() => {
